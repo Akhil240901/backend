@@ -10,12 +10,14 @@ const fs=require("fs");
 //fs.appendFileSync("read.txt"," lets go hard");
 
 //read and display content
-const buff_content=fs.readFileSync("read.txt");
-// console.log(buff_content);  //this will display bite code or buffer value
-org_content=buff_content.toString();
-console.log(org_content);
+// const buff_content=fs.readFileSync("read.txt");
+// // console.log(buff_content);  //this will display bite code or buffer value
+// org_content=buff_content.toString();
+// console.log(org_content);
 
 //rename file content
-fs.renameSync("read.txt","read_file.txt")
+//fs.renameSync("read.txt","read_file.txt")
 
 //delete content
+ fs.unlinkSync("read_file.txt");
+ 
