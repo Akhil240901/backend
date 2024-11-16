@@ -1,23 +1,24 @@
-//file system core module
 const fs=require("fs");
+const { console } = require("inspector");
 
-//writeFileSync("file name","Content");
-      // fs.writeFileSync("read.txt","Hello node");
-// this will override previous content 
-       //fs.writeFileSync("read.txt","Hello node from akhil this side");
+//create file in asynchronous way 
+  //writefile("file_name","content","callback function")
+fs.writeFile("bio.txt","Its is my personel file where i write many things with my consent thats it!!",(err)=>{
+      console.log("Written in file successfully");
+      console.log(err)
+})
 
-//append content in next line
-//fs.appendFileSync("read.txt"," lets go hard");
+//append or update 
+// fs.appendFile("bio.txt","  go ahead ",(err)=>{
+//       console.log("added successfully")
+// });
 
-//read and display content
-// const buff_content=fs.readFileSync("read.txt");
-// // console.log(buff_content);  //this will display bite code or buffer value
-// org_content=buff_content.toString();
-// console.log(org_content);
+//read
+fs.readFile("bio.txt","UTF-8",(err,data)=>{
+      console.log(err);
+      console.log(data+"hygug");
+})
 
-//rename file content
-//fs.renameSync("read.txt","read_file.txt")
-
-//delete content
- fs.unlinkSync("read_file.txt");
- 
+// fs.unlink("bio.tx",(err)=>{
+//      console.log(err)
+// });
