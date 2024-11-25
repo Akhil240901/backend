@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akhil240901/backend.git"
+  },
+  "author": "akhil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akhil240901/backend/issues"
+  },
+  "homepage": "https://github.com/Akhil240901/backend#readme",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "validator": "^13.12.0"
+  }
+}
