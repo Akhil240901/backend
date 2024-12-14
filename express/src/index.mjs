@@ -10,8 +10,12 @@ const __filename = fileURLToPath(import.meta.url);
 // Get the __dirname equivalent
 const __dirname = dirname(__filename);
 
+//absolute or full path
 const staticPath=path.join(__dirname,"../public")
+
+//using middleware, below line will show html page
 app.use(express.static(staticPath));
+
 app.get("/", (req, res) => {
   res.send("<h1> Hello, Express!</h1>");
 });
