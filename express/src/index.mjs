@@ -11,12 +11,15 @@ const __filename = fileURLToPath(import.meta.url);
 // Get the __dirname equivalent
 const __dirname = dirname(__filename);
 
-//absolute or full path
+//absolute or full path for static content
 const staticPath=path.join(__dirname,"../public")
 
+//path for changing views directory to templates
+const templatesPath=path.join(__dirname,"../templates")
 //to set view engine
 app.set("view engine","hbs");
-
+//Changing  view engine folder to templates 
+app.set("views",templatesPath);
 app.get("",(req,res)=>{
   //.render will serve page and send data just like props in react in object
   res.render("index.hbs",{
