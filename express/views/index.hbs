@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML Website</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+
+    <!-- Header Section -->
+    <header style="background-color: #4CAF50; color: white; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+        <!-- Logo -->
+        <div style="display: flex; align-items: center;">
+            <img src="https://via.placeholder.com/50" alt="Logo" style="border-radius: 50%; margin-right: 10px;">
+            <h1 style="margin: 0; font-size: 1.5em;">My Website</h1>
+        </div>
+        <!-- Navigation Links -->
+        <nav>
+            <a href="#" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+            <a href="#contact" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+            <a href="#about" style="color: white; text-decoration: none; margin: 0 15px;">About Us</a>
+            <!-- use {{}} to add dynamic data-->
+            <a href="#signin" style="color: white; text-decoration: none; margin: 0 15px;">{{sourceName}}</a>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main style="padding: 20px; text-align: center;">
+        <h2 id="about">About</h2>
+        <p>This is the main content of the page. You can customize it as per your requirements.</p>
+        <p>Inline CSS is used to style this page directly within the HTML elements.</p>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" style="background-color: #333; color: white; padding: 10px; text-align: center;">
+        <p>Contact us: email@example.com</p>
+        <p>&copy; 2024 My Website | All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
