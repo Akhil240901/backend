@@ -64,6 +64,33 @@ app.get("/students/:id", async (req, res) => {
   }
 });
 
+//Update data using PATCH request
+app.patch("/students/:id", async (req, res) => {
+  try {
+    const _id = req.params.id;
+    const studData = await Student.findByIdAndUpdate(_id, req.body, {
+      new: true,
+    });
+    console.log(studData);
+    res.send(studData);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+});
+
+//delete request to delete document
+app.delete("/students/:id", async (req, res) => {
+  try {
+    const studentData = await Student.findByIdAndDelete(req.params.id);
+    if (!studentData) {
+      return res.status(404).send();
+    }
+    res.send(studentData);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 app.listen(port, () => {
   console.log(`connection is setup at port ${port}`);
 });
