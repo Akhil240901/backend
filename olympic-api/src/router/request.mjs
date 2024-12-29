@@ -15,5 +15,28 @@ router.post("/athlete", async (req, res) => {
   }
 });
 
+//get the data using get method
+router.get("/athlete", async (req, res) => {
+  try {
+    const atheleteData = await Athlete.find();
+    res.send(atheleteData);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+//update the ranking using patch request
+router.patch("/athlete/:id", async (req, res) => {
+  try {
+    const _id = req.params.id;
+    const updateData = await Athlete.findByIdAndUpdate(_id, req.body, {
+      new: true,
+    });
+    res.send(updateData);
+    console.log(updateData);
+  } catch (error) {
+    res.send(error);
+  }
+});
 //export router
 export default router;
