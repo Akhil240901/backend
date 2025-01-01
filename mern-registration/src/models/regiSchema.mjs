@@ -18,14 +18,12 @@ const userSchema = new mongoose.Schema({
     type: Number,
   },
   password: {
-    type: Number,
+    type: String,
     required: true,
-    unique: true,
   },
   cpassword: {
-    type: Number,
+    type: String,
     required: true,
-    unique: true,
   },
 });
 

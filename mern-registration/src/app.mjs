@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
 import { console } from "inspector";
-
+import bcrypt from "bcrypt";
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -36,6 +36,10 @@ app.get("/register", async (req, res) => {
   res.render("register.hbs");
 });
 
+app.get("/login", async (req, res) => {
+  res.render("login.hbs");
+});
+
 //post request will handle data from form and store in database
 app.post("/register", async (req, res) => {
   try {
@@ -59,6 +63,31 @@ app.post("/register", async (req, res) => {
     res.status(400).send(error);
   }
 });
+
+app.post("/login", async (req, res) => {
+  try {
+    const email = req.body.email;
+    const pass = req.body.password;
+
+    const formEmail = await User.findOne({ email: email });
+    console.log(formEmail);
+    console.log(email);
+    if (formEmail.password === pass) {
+      res.status(201).render("index.hbs");
+    } else {
+      res.send("Invalid Credential");
+    }
+  } catch (error) {
+    res.status(400).send("Invalid Credential try again");
+  }
+});
+
+const check = async (paassword) => {
+  const hashpass = bcrypt.hash(paassword, 10);
+  console.log(paassword);
+};
+
+check("akhil");
 app.listen(port, () => {
-  console.log("serveris listening at ${port}");
+  console.log("server is listening at ${port}");
 });
