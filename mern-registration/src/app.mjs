@@ -70,9 +70,8 @@ app.post("/login", async (req, res) => {
     const pass = req.body.password;
 
     const formEmail = await User.findOne({ email: email });
-    console.log(formEmail);
-    console.log(email);
-    if (formEmail.password === pass) {
+    const isMatch = await bcrypt.compare(pass, formEmail.password);
+    if (isMatch) {
       res.status(201).render("index.hbs");
     } else {
       res.send("Invalid Credential");
@@ -82,12 +81,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
-const check = async (paassword) => {
-  const hashpass = bcrypt.hash(paassword, 10);
-  console.log(paassword);
-};
+// const check = async (paassword) => {
+//   const hashpass = bcrypt.hash(paassword, 10);
+//   console.log(paassword);
+// };
 
-check("akhil");
+// check("akhil");
 app.listen(port, () => {
   console.log("server is listening at ${port}");
 });
