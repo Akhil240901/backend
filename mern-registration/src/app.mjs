@@ -63,6 +63,12 @@ app.post("/register", async (req, res) => {
       const token = await userData.generateToken();
       console.log(token + " is our token");
 
+      //save token in cookies and provide expiring period
+      res.cookie("jwt", token, {
+        expires: new Date(Date.now + 30000),
+        httpOnly: true,
+      });
+
       //save in database
       const data = await userData.save();
       res.status(201).render("index.hbs");
