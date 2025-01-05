@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 mongoose
-  .connect("mongodb://localhost:27017/user-registration")
+  .connect(process.env.DB)
   .then(() => {
     console.log("Connection is successful");
   })

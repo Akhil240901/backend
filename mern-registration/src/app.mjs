@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import "./db/conn.mjs";
 import User from "./models/regiSchema.mjs";
@@ -7,18 +8,22 @@ import { dirname } from "path";
 import path from "path";
 import { console } from "inspector";
 import bcrypt from "bcrypt";
+
+//initialize the app
 const app = express();
 const port = process.env.PORT || 3000;
 
 //get directory path
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
 //absolute path
 console.log(__dirname);
 const staticPath = path.join(__dirname, "../public");
 const templatePath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
-// //middleware
+
+//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(staticPath));
@@ -54,6 +59,11 @@ app.post("/register", async (req, res) => {
         password: req.body.password,
         cpassword: req.body.cpassword,
       });
+      //get token from regiSchema file
+      const token = await userData.generateToken();
+      console.log(token + " is our token");
+
+      //save in database
       const data = await userData.save();
       res.status(201).render("index.hbs");
     } else {
@@ -68,13 +78,15 @@ app.post("/login", async (req, res) => {
   try {
     const email = req.body.email;
     const pass = req.body.password;
-
+    console.log(email + "  " + pass);
     const formEmail = await User.findOne({ email: email });
+    console.log(formEmail);
     const isMatch = await bcrypt.compare(pass, formEmail.password);
+    console.log(isMatch);
     if (isMatch) {
       res.status(201).render("index.hbs");
     } else {
-      res.send("Invalid Credential");
+      res.send("Invalid Credential  okkk ");
     }
   } catch (error) {
     res.status(400).send("Invalid Credential try again");
